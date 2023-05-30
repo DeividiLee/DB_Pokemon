@@ -8,10 +8,7 @@ body {
     background-color: #5e5b5bad;
     color: #333333;
 }
-body.modo-escuro{
-    background-color: #212121;
-    color: #f5f5f5;
-}
+
 header{
     background-color: rgb(212, 101, 10);
     display: flex;
