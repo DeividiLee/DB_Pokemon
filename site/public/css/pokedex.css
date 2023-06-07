@@ -1,3 +1,11 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
 body {
     font-family:'Poppins',sans-serif; /* fallback */
     max-width: 1280px;
@@ -5,50 +13,64 @@ body {
     comentando essa característica é possível ver a diferença */
     margin: 0 auto;
     /* 0 no Y e auto no X*/
-    background-color: #5e5b5bad;
+    background: linear-gradient(319deg, #ba2d0b 0%, #fe7f2d 37%, #ffbf46 100%);
     color: #333333;
 }
 
-header{
-    background-color: rgb(212, 101, 10);
-    display: flex;
-    flex-direction: row;
-    /* deixa um do lado do outro */
+header {
+    position:fixed;
+    right: 0;
+    top:0;
+    z-index: 1000;
+    width:100%;
+    display:flex;
+    align-items:center;
     justify-content: space-between;
-    padding: 25px;
-    text-decoration: none;
-}
-header a{
+    padding: 33px ;
+    background:transparent;
     
 }
-header li{
-    /* não sei como deixar a pokedex e a signup alinhada */
-    display:flex;
-    color: black
-}
 
-header .logo{
-    width: 30px;
-    transition: 0.2s ease-in-out;
+.logo {
+    font-size: 30px;
+    font-weight: 700;
+    color:black
+
 }
-header #botao-alterar-tema{
-    background: none;
-    /* tirar o backgroud */
-    border: none;
-    cursor: pointer;
+.navlist{
+    display:flex;
 }
-header .logo:hover,
-.sol:hover{
-    transform: scale(1.25);
-    /* aumentar a escala para 1.25 */
+.navlist a {
+    /* color:white; */
+    color:black;
+    margin-left:60px;
+    margin-right:70px;
+    font-size: 30px;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: all .55s ease
+}
+.navlist a:hover{
+    border-bottom: 2px solid white;
     cursor: pointer;
 }
 main {
-    background-color: antiquewhite;
+    font-size: 14px;
+    font-weight:400;
+    position: relative;
     padding: 25px;
+    min-height: 100vh;
+    height: 100%;
+    width:100%;
+    display:grid;
+    align-items: center;
+    gap: 2rem;
+    ;
     /* espaçamento interno da div, para separar o conteúdo da parede */
 }
 .listagem-pokemon {
+    /* font-weight: 100; */
+    /* font-size: */
     display: flex;
     flex-wrap: wrap;
     /* o wrap  */
@@ -72,14 +94,11 @@ main .cartao-pokemon{
 }
 main .cartao-pokemon:hover{
     transform: scale(1.05);
-    
-    /* nome do efeito "ease-in-out" faz parecer que ta crescendo */
     background-color: #96d9d6;
 }
 .informacoes{
     display: flex;
     justify-content: space-between;
-    /* border-color: 1px solid gray */
     border: 1px solid gray;
     border-radius: 8px;
 }
