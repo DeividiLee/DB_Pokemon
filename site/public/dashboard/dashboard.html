@@ -2,13 +2,14 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Dashboards</title>
+    <title>PokemonDB</title>
 
-    <link rel="stylesheet" href="css/dashboards.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="dashboards.css">
     <script src="../js/funcoes.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -24,76 +25,14 @@
 </head>
 
 <body onload=" atualizarFeed()">
-    <header>
-        <a href="#" class="logo">POKEMONDB</a>
-        <ul class="navlist">
-            <li><a href="principal.html">Sair</a></li>
-        </ul>
-    </header>
+
     <aside>
-        digite o número do pokémon <input type="number" id="input_pokemon">
-        <button onclick="adicionar()">Adicionar</button>
-        <div>
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Tipo</th>
-                    <th>HP</th>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-            </table>
+        <div class="header-left">
+            escolha um  pokemon <input type="number" id="inpt_pokemon">
+            <button onclick="cadastrar()">cadastrar</button>
         </div>
     </aside>
-
-        <article>
-            <div class="dash">
-                <div id="graficos">
-                    <div id="grafico1" class="display-block">
-                        <h3 class="tituloGraficos">
-                            <span id="tituloAquario1">Tipos</span>
-                        </h3>
-                        <div class="graph">
-                            <canvas id="myChartCanvas1"></canvas>
-                        </div>
-                        <div class="label-captura">
-                            <p id="avisoCaptura1" style="color: white"></p>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </article>
-    </div>
+    <article></article>
 
 
 </body>
@@ -101,41 +40,7 @@
 </html>
 
 <script>
-   function adicionar() {
-      
-      //Recupere o valor da nova input pelo nome do id
-      // Agora vá para o método fetch logo abaixo
-      var pokemonvar = pokemon_input.value;
-    //   var nomeVar = nome_input.value;
-    //   var emailVar = email_input.value;
-    //   var senhaVar = senha_input.value;
-    //   var confirmacaoSenhaVar = confirmacao_senha_input.value;
-
-      if (pokemonVar == "" ) {
-          cardErro.style.display = "block"
-          mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";}
-          else {
-
-
-
-      // Enviando o valor da nova input
-      fetch("/usuarios/cadastrar", {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-              // crie um atributo que recebe o valor recuperado aqui
-              // Agora vá para o arquivo routes/usuario.js
-            //   nomeServer: nomeVar,
-            //   emailServer: emailVar,
-            //   senhaServer: senhaVar
-
-              pokemonServer: pokemonVar
-          })
-      })}}
-
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    
 
     let proximaAtualizacao;
 
@@ -150,40 +55,36 @@
 
     verificar_autenticacao();
 
-    function alterarTitulo(idAquario) {
-        var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
-        tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idAquario + "</span>"
-    }
+    function cadastrar() {
+      
+      //Recupere o valor da nova input pelo nome do id
+      // Agora vá para o método fetch logo abaixo
+      var pokemonVar = input_pokemon.value
+      
 
-    function exibirAquario(idAquario) {
-        let todosOsGraficos = document.getElementById("graficos")
+      if (pokemonVar == "") {
+          alert("Adionar um pokemon")}
+          
 
-        for (i = 1; i <= todosOsGraficos.childElementCount; i++) {
-            // exibindo - ou não - o gráfico
-            let elementoAtual = document.getElementById(`grafico${i}`)
-            if (elementoAtual.classList.contains("display-block")) {
-                elementoAtual.classList.remove("display-block")
-            }
-            elementoAtual.classList.add("display-none")
-            
-            // alterando estilo do botão
-            let btnAtual = document.getElementById(`btnAquario${i}`)
-            if (btnAtual.classList.contains("btn-pink")) {
-                btnAtual.classList.remove("btn-pink")
-            }
-            btnAtual.classList.add("btn-white")
-        }
-        
-        // exibindo - ou não - o gráfico
-        let graficoExibir = document.getElementById(`grafico${idAquario}`)
-        graficoExibir.classList.remove("display-none")
-        graficoExibir.classList.add("display-block")
-        
-        // alterando estilo do botão
-        let btnExibir = document.getElementById(`btnAquario${idAquario}`)
-        btnExibir.classList.remove("btn-white")
-        btnExibir.classList.add("btn-pink")
-    }
+
+
+      // Enviando o valor da nova input
+      fetch("/pokemon/cadastrar", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+              // crie um atributo que recebe o valor recuperado aqui
+              // Agora vá para o arquivo routes/usuario.js
+              pokemonServer: pokemonVar
+              
+          })
+      })}
+
+    
+
+    
 
     // O gráfico é construído com três funções:
     // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
@@ -235,7 +136,7 @@
         let dados = {
             labels: labels,
             datasets: [{
-                label: 'Umidade',
+                label: 'Fogo, Água, Gelo',
                 data: [],
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
