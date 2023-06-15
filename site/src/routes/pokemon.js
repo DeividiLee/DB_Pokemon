@@ -6,12 +6,12 @@ var pokemonController = require("../controllers/pokemonController");
 
 router.post("/cadastrar", function (req, res) {
     // função a ser chamada quando acessar /pokemon/cadastrar
-   pokemonControllerController.cadastrar(req, res);
+   pokemonController.cadastrar(req, res);
 });
 
 router.get("/listar", function (req, res) {
     // função a ser chamada quando acessar /pokemon/listar
-    pokemonControllerController.listar(req, res);
+    pokemonController.listar(req, res);
 });
 
 module.exports = router;
