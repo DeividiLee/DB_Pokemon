@@ -6,6 +6,7 @@
     list-style: none;
     text-decoration: none;
 }
+
 header {
     position:fixed;
     right: 0;
@@ -124,4 +125,7 @@ section{
 .ri-github-fill{
     width:40px;
     height:40px;
+}
+footer{
+    background-color: black;
 }

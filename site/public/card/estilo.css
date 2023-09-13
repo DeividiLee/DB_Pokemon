@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: black;
+  background: linear-gradient(319deg, #ba2d0b 0%, #fe7f2d 37%, #ffbf46 100%);
 }
 
 * {
@@ -50,31 +50,16 @@ header {
   cursor: pointer;
 }
 
-:root {
-  --tamanho-header: 80px;
-  --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-  --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-  --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-  --tamanho-footer: 65px;
-}
+
 
 .container {
   display: flex;
   width: 80%;
   margin: auto;
 }
-
-
-
-
-
 .agora {
   font-weight: 800;
 }
-
-
-
-
 .banner {
   height: var(--tamanho-banner);
   background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
