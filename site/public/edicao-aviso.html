@@ -63,27 +63,9 @@
                     <h1>Editar um aviso</h1>
                     <div class="div-form">
                         <label>
-                            ID:
-                            <br>
-                            <input id="input_id" maxlength="100" type="text" style="color: rgb(196, 196, 196)" disabled>
-                        </label>
-                        <label>
-                            Autor:
-                            <br>
-                            <input id="input_nome" maxlength="100" type="text" style="color: rgb(196, 196, 196)"
-                                disabled>
-                        </label>
-                        <label>
-                            Título:
-                            <br>
-                            <input id="input_titulo" maxlength="100" type="text" style="color: rgb(196, 196, 196)"
-                                disabled>
-                        </label>
-                        <br>
-                        <label>
                             Descrição (máximo de 250 caracteres):
                             <br>
-                            <textarea id="textarea_descricao" maxlength="250" rows="5"></textarea>
+                            <textarea id="textarea_descricao" ></textarea>
                         </label>
                         <br>
                         <button onclick="editar()">Editar</button>
@@ -98,12 +80,10 @@
 </html>
 
 <script>
-    function listarInfosDeUm() {
-        console.log("Criar função de trazer informações de post escolhido");
-    }
+    
 
     function editar() {
-        fetch(`/avisos/editar/${sessionStorage.getItem("ID_POSTAGEM_EDITANDO")}`, {
+        fetch(`/pokemon/editar/${sessionStorage.getItem("ID_POSTAGEM_EDITANDO")}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -115,7 +95,7 @@
 
             if (resposta.ok) {
                 window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = "/dashboard/mural.html"
+                window.location = "dashboard.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {

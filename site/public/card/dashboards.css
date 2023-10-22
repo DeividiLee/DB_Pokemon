@@ -1,0 +1,71 @@
+/* pagina mural */
+
+*,
+body {
+  font-family: Poppins,sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+body{
+  display:flex;
+  
+}
+aside{
+  background: rgb(0, 0, 0);
+  width:30%;
+  height:898px;;
+  flex-direction: column;
+  display:flex;
+  align-items: left;
+}
+.divCadastro{
+  margin:20px 110px;
+  width:300px;
+}
+.divCadastro input {
+  all:unset;
+  padding: 10px;
+  background:#a8a29e;
+  width:70%;
+  margin:0;
+}
+.divCadastro button {
+  margin:0;
+  height:39px;
+  width:39px;
+  background: #7f37c9;
+  border:none;
+  cursor:pointer;
+  font-size:100%;
+}
+#teste{
+  color:white;
+  background: rgba(0, 0, 0, 0.308);
+  /* max-height:30%; */
+  margin:30px;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  overflow-y:scroll
+}
+
+*::-webkit-scrollbar-track {
+  background: #f1e9e9;
+  border-radius: 25px;;
+}
+
+article{
+  /* background: blue; */
+  display:flex;
+  height:790px;
+  width:790px;;
+  justify-content: right;
+
+}
+
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
