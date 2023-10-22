@@ -31,12 +31,11 @@ function cadastrar(req, res) {
         res.status(500).json(erro.sqlMessage);
     })
 }
-
 function editar(req, res) {
     var novaDescricao = req.body.descricao;
     
 
-    avisoModel.editar(novaDescricao)
+    pokemonModel.editar(novaDescricao)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -51,9 +50,24 @@ function editar(req, res) {
         );
 
 }
+function enviar(req, res) {
+    var mensagem = req.body.mensagemServer
+
+    if (mensagem == undefined) {
+        res.status(400).send("Sua mensagem está undefined!");
+    } 
+
+    pokemonModel.enviar(mensagem).then(function(resposta){
+        res.status(200).send("mensagem criada com sucesso");
+    }).catch(function(erro){
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
 
 module.exports = {
     listar,
     cadastrar,
-    editar
+    editar,
+    enviar
 }

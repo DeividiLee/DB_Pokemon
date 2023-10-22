@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PokemonDB</title>
 
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="dashboards.css" />
+    <!-- <link rel="stylesheet" href="../card/style.css" /> -->
+    <link rel="stylesheet" href="card/dashboards.css" />
     <script src="../js/funcoes.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -28,26 +28,70 @@
 
   <!-- <body onload=" atualizarFeed()"> -->
   <body>
-    <header class="headerCabeçalho">
-      <div class="usuario"></div>
-      <a href="editar"></a>
-      <a href="sair"></a>
-    </header>
-    <aside>
+    <!-- <header>
+      <div class="header-left">
+        <div class="hello">
+            <h3>Olá, <span id="b_usuario"></span>!</h3>
+        </div>
+        <div class="header-right">
+          <div>
+            <div class="btn-nav-white">
+              <a href="dashboard.html">
+                  <h3>Dashboard</h3>
+              </a>
+          </div>
+          <div class="btn-nav-white">
+            <a href="edicao.html">
+                <h3>Editar</h3>
+            </a>
+        </div>
+          <div class="btn-logout" onclick="limparSessao()">
+              <h3>Sair</h3>
+          </div>
+        </div>
+        </div>
+        
+    </header> -->
+    <header>
+      <p  class="logo" >PokemonDB</p>
+      <ul class="navlist">
+          <li>
+            <div class="btn-nav-white">
+              <a href="dashboard.html">
+                  <h3>Dashboard</h3>
+              </a>
+          </div>
+          </li>
+          <li><div class="btn-nav-white">
+            <a href="edicao.html">
+                <h3>Editar</h3>
+            </a>
+        </div></li>
+          <li><div class="btn-logout" onclick="limparSessao()">
+            <h3>Sair</h3>
+        </div></li>
+          
+      </ul>
+  </header>
+  
+  </div>
+  <div id="main">
+    <div id="main"></div>
+    <section>
       <div class="divCadastro">
          <input type="number" id="input_pokemon" placeholder="001" />
-        <button onclick="cadastrar()"><i class="fa-solid fa-plus"></i></button>
+        <button onclick="cadastrar()">+</i></button>
       </div>
-      <div id="cabecalho"> </div>
       <div id="teste"></div>
 
-      
-    </aside>
+    </section>
     <article >
         <div class="gráfico">
             <canvas id="myChartCanvas"> </canvas>
           </div>
     </article>
+  </div>
+  
   </body>
 </html>
 

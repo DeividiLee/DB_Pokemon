@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AquaTech | Login</title>
+    <title>Pokemon | Login</title>
 
     <script src="./js/funcoes.js"></script>
 
@@ -18,11 +18,11 @@
     <!--Header-->
 
     <header>
-        <a href="#" class="logo">POKEMONDB</a>
+        <p  class="logo" >PokemonDB</p>
         <ul class="navlist">
             <li><a href="index.html">Home</a></li>
             <li><a href="pokedex.html">Database</a></li>
-            <li><a href="cadastro.html">Sign Up</a></li>
+            <li><a href="cadastro.html">Cadastrar</a></li>
             
         </ul>
     </header>
@@ -40,7 +40,7 @@
                 <div class="formulario">
                     <div class="campo">
                         <span>E-mail:</span>
-                        <input id="email_input" type="text" placeholder="Login">
+                        <input id="email_input" type="text" placeholder="e-mail">
                     </div>
                     <div class="campo">
                         <span>Senha:</span>
@@ -65,7 +65,7 @@
 <script>
 
 
-    function entrar() {
+function entrar() {
         aguardar();
 
         var emailVar = email_input.value;
@@ -79,7 +79,6 @@
         }
         else {
             setInterval(sumirMensagem, 5000)
-            window.location = "./dashboard/dashboard.html"
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -103,13 +102,13 @@
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
-
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {
-                        // window.location = "./dashboard/cards.html";
+                        window.location = "dashboard.html";
                     }, 1000); // apenas para exibir o loading
 
                 });

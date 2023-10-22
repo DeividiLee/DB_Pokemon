@@ -2,59 +2,111 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="card/principal.css">
     
    
 </head>
-    <title>Document</title>
+    <title>PokemonDB | Home</title>
 </head>
 <body>
     <header>
-        <a href="index.html" class="logo" >Pokémon</a>
+        <p  class="logo" >PokemonDB</p>
         <ul class="navlist">
             <li><a href="pokedex.html">Pokédex</a></li>
             <li><a href="cadastro.html">Cadastro</a></li>
             <li><a href="login.html">Login</a></li>
         </ul>
     </header>
-    <section class="hero">
-        <div class="hero-text">
+    <section class="pokemon">
+        <div class="pokemon-text">
             <h4>Nintendo</h4>
             <h1>Pokémon</h1>
-            <p>Comece sua jornada para se tornar mestre pokémon </p>
+            <div>
+                <p>Comece sua jornada para se tornar mestre pokémon </p>
+                <div>.</div>
             <a href="cadastro.html">Monte seu time pokémon</a> 
+            </div>
         </div>
-        <div class="hero-img">
+        <div class="pokemon-img">
             <img src="assets/imgs/386.png" alt="">
         </div>
-        <section class="section_sobre">
-            <h2>O Mundo Pokémon não é só um jogo  </h2>
-            <p>
-                Durante muitos anos, meu jogo favorito foi o Pokémon, tendo começado primeiro pelo videogame portáril Nintendo DS,
-                e até hoje um entusiasta da série. Através do jogo, fui capaz de me conectar com vários amigos, de prédio, escola e até hoje na faculdade
-                Além disso,ele me ofereceu vários momentos divertidos e inesquecíveis na minha vida.
-            </p>
-            <ul>
-                <li><img src="" alt=""></li>
-                <li><img src="" alt=""></li>
-                <li><img src="" alt=""></li>
-            </ul>
+        <img src="assets/imgs/charizard main.png" alt="">
+            
+        <div id="section_descricao">
+            <h1 style="color:white">Descubra mais sobre este <br>maravilhoso universo Pokemon </h1> 
+            <div>.</div>
+        <a href="pokedex.html">Saiba Mais</a> 
+        </div>
+        
+            
         </section>
     </section>
     
     <footer>
-        <ul class="footer_nav">
-            <h2>
-                Pokémon
-            </h2>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="cadastro.html">Cadastro</a></li>
-            <li><a href="login.html"></a></li>
-        </ul>
+        <div id="footer_conteudo">
+            <ul class="footer_nav">
+                <h1>
+                    PokemonDB
+                </h1>
+                <li><a href="index.html" style="color:aliceblue">Home</a></li>
+                <li><a href="pokedex.html" style="color:aliceblue">Pokedex</a></li>
+                <li><a href="cadastro.html" style="color:aliceblue">Cadastro</a></li>
+                <li><a href="login.html" style="color:aliceblue">Login</a></li>
+            </ul>
+            <ul id="footer_input">
+                <h2>
+                    Nos mande uma sugestão!
+                </h2>
+                <div id="input_grupo">
+                    <div id="mensagem_erro"></div>
+                    <textarea id="textarea_descricao" maxlength="250" rows="5"></textarea>
+                    <button onclick="enviar()">Enviar</button>
+                </div>
+            </ul>
+        </div>
+        
+        <div id="footer_copyright">
+            © 2023 todos os direitos reservados
+        </div>
     </footer>
     
     
 </body>
 </html>
+<script>
+    function enviar() {
+      
+      //Recupere o valor da nova input pelo nome do id
+      // Agora vá para o método fetch logo abaixo
+      var mensagemVar = textarea_descricao.value
+
+        mensagem_erro.innerHTML =''
+      if ( mensagemVar == "") {
+        //   alert("Preencha o campo vazio")
+          mensagem_erro.innerHTML ='Preencha o campo antes de enviar'
+
+      } 
+
+           else {mensagem_erro="Obrigado pela Sugestão"}
+          // Enviando o valor da nova input
+        //   sumirMensagem()
+          fetch("/pokemon/enviar", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                  // crie um atributo que recebe o valor recuperado aqui
+                  // Agora vá para o arquivo routes/pokemon.js
+                //   nomeServer: nomeVar,
+                //   emailServer: emailVar,
+                //   senhaServer: senhaVar,
+                  mensagemServer: mensagemVar
+              })
+          })}
+            
+      
+    
+</script>
