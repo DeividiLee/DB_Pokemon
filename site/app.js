@@ -9,10 +9,13 @@ var PORTA = process.env.AMBIENTE_PROCESSO == "desenvolvimento" ? 3333 : 8080;
 var app = express();
 
 var indexRouter = require("./src/routes/index");
+// usuario usado para cadastro e login
 var usuarioRouter = require("./src/routes/usuarios");
 var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
+// pokemon usado para gráficos e modificação
 var pokemonRouter = require("./src/routes/pokemon");
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

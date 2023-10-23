@@ -79,7 +79,6 @@
 <script>
    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
   
-  console.log(sessionStorage.NOME_USUARIO)
   let proximaAtualizacao;
 
   // window.onload = obterDadosGraficos();
@@ -92,18 +91,16 @@
   }
 
   // verificar_autenticacao();
-
   function cadastrar() {
-    console.log("DENTRO DO CADASTRAR");
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var pokemonVar = Number(input_pokemon.value);
-
+    // se a input estivar vázia não registrará nada e manda um aviso
     if (pokemonVar == "") {
       alert("Adionar um pokemon");
     }
-
+    // com um número dentro da input, entrará no fetch
     // Enviando o valor da nova input
     fetch("/pokemon/cadastrar", {
       method: "POST",
@@ -139,6 +136,8 @@
 
     return false;
   }
+
+  // uma lista será criada com os pokémon que foram registrados;
   window.onload = listar()
   function listar() {
     fetch("/pokemon/listar")
@@ -159,22 +158,8 @@
 
             resposta.reverse();
             var feed = document.getElementById("teste");
-            // var cabecalho = document.getElementById("cabecalho");
             feed.innerHTML = "";
-            // var thead = document.createElement("thead");
-            // var tr = document.createElement("tr");
-            // var idThead = document.createElement("th");
-            // var nameThead = document.createElement("th");
-            // var typeThead = document.createElement("th");
-            // idThead.innerHTML = "ID";
-            // nameThead.innerHTML = "Nome";
-            // typeThead.innerHTML = "Tipo";
-            // statusThead.innerHTML = "Status";
-            // tr.appendChild(idThead);
-            // tr.appendChild(nameThead);
-            // tr.appendChild(typeThead);
-            // thead.appendChild(tr);
-            // cabecalho.appendChild(thead);
+
             for (let i = 0; i < resposta.length; i++) {
               var publicacao = resposta[i];
 
@@ -200,45 +185,6 @@
         console.error(resposta);
       });
   }
-
-  // O gráfico é construído com três funções:
-  // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
-  // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
-  // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
-
-  // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
-  // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
-  // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
-
-  //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-  //     Para ajustar o "select", ajuste o comando sql em src/models
-  // function obterDadosGrafico(idAquario) {
-  //   alterarTitulo(idAquario);
-
-  //   if (proximaAtualizacao != undefined) {
-  //     clearTimeout(proximaAtualizacao);
-  //   }
-
-  //   fetch(`/medidas/ultimas/${idAquario}`, { cache: "no-store" })
-  //     .then(function (response) {
-  //       if (response.ok) {
-  //         response.json().then(function (resposta) {
-  //           console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-  //           resposta.reverse();
-
-  //           plotarGrafico(resposta, idAquario);
-  //         });
-  //       } else {
-  //         console.error("Nenhum dado encontrado ou erro na API");
-  //       }
-  //     })
-  //     .catch(function (error) {
-  //       console.error(
-  //         `Erro na obtenção dos dados p/ gráfico: ${error.message}`
-  //       );
-  //     });
-  // }
-
   // // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
   // // Configura o gráfico (cores, tipo, etc), materializa-o na página e,
   // // A função *plotarGrafico* também invoca a função *atualizarGrafico*
@@ -246,6 +192,7 @@
     console.log("iniciando plotagem do gráfico...");
 
     // Criando estrutura para plotar gráfico - labels
+    // colunas criadas dentro do gráfico
     let labels = ['fogo', 'agua', 'gelo', 'grama', 'dragao', 'terra', 'lutador', 'fada', 'inseto', 'normal', 'escuridao', 'psiquico', 'fantasma', 'metal', 'veneno', 'rocha'];
 
     // Criando estrutura para plotar gráfico - dados
@@ -257,6 +204,7 @@
           data: [],
           fill: false,
           borderColor: "rgb(75, 192, 192)",
+          // cores de acordo com o tipo de pokémon(agua= azul, fogo = vermelho, gelo = azul claro e etc...)
           backgroundColor: ["#FF4422", "#3399ff ", "#66CCFF", "#77CC55", "#7766EE", "BBAA66", "BB5544", "#EE99EE", "#AABB22", "#AAAA99", "#775522", "#FF5599", "#6666BB", "BBAA66", "#AAAABB", "#BBAA66"],
           tension: 0.1,
         }
@@ -286,12 +234,11 @@
     var rocha = 0
     var veneno = 0
     var metal = 0
-
+    // 
+    //  caso o reposta[i].type for de água, adicionará um ponto na variavel agua
     for (i = 0; i < resposta.length; i++) {
       var tipo = resposta[i]
-      // var tipo2 = resposta[i].Type2
-      console.log("nathan ta auqi")
-      console.log(tipo)
+
       if (tipo.Type == 'Water' || tipo.Type2 == 'Water') {
         agua++
       }

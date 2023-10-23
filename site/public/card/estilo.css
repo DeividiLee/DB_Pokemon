@@ -3,7 +3,7 @@ body {
   padding: 0;
   background: linear-gradient(319deg, #ba2d0b 0%, #fe7f2d 37%, #ffbf46 100%);
 }
-
+/* o caracter "*" indica que será incluido em todas as divs  */
 * {
   padding: 0;
   margin: 0;
@@ -12,6 +12,7 @@ body {
   list-style: none;
   text-decoration: none;
 }
+/* começo do header */
 header {
   position:fixed;
   right: 0;
@@ -48,74 +49,18 @@ header {
   cursor: pointer;
 }
 
-
-
+/* final do header */
+/* começo do formulário de cadastro */
 .container {
   display: flex;
   width: 80%;
   margin: auto;
 }
-.agora {
-  font-weight: 800;
-}
-.banner {
-  height: var(--tamanho-banner);
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
-  background-size: cover;
-}
 
-.banner .container {
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.banner .container p {
-  font-size: 36px;
-  color: white;
-  width: 280px;
-}
-
-.banner .container span {
-  font-weight: 800;
-}
-
-.social {
-  background-color: #e5e5e5;
-  display: flex;
-}
-
-.social .container {
-  justify-content: center;
-}
-
-.box img {
-  width: 170px;
-}
-
-.social .container .boxes {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.box {
-  width: 280px;
-  height: 450px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.box p {
-  text-align: center;
-}
 
 .login {
-  height: var(--tamanho-login);
   height: 1000px;
-  background: linear-gradient(319deg, #ba2d0b 0%, #fe7f2d 37%, #ffbf46 100%);
+  background: linear-gradient(319deg, #ba2d0b 0%, #fe7f2d 37%, #ffbf46 100%); 
 }
 
 .login .container {
@@ -125,39 +70,39 @@ header {
 }
 
 .card {
-  opacity: 0.7;
+  opacity: 0.7; 
+  /* deixa um pouco translucido */
   width: 30%;
   border-color: #e6005a;
   background: #e5e5e5;
-  
   border-radius: 10px;
+  /* arredondando a borda */
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
   color: red;
-  row-gap: 20px;
+  padding:20px;
 }
-
+/* ajustando o formulário apenas para o cadastro */
 .card-cadastro {
   height: 60%;
 }
 .card-cadastro h2{
   padding-top: 20px;
 }
-
+/* apenas para cadastro */
+/* código para a página de login */
 .card-login {
   height: 60%;
-  
 }
-
+/* fim do código da página de login */
 .card h2 {
   margin: 0;
   font-size: 30px;
 }
 
 .formulario {
-  opacity: 1.0;
   display: flex;
   height: 90%;
   width: 80%;
@@ -167,7 +112,6 @@ header {
 }
 
 .formulario span {
-  
   font-size: 15px;
   font-weight: 800;
 }
@@ -195,15 +139,16 @@ header {
   color: #fff;
   background-color: red;
   width: 100%;
-  
   height: 30px;
   align-self: center;
 
 }
-
+/* fim do formulário de cadastro */
+/* imagem <img src="./assets/circle-loading.gif" id="loading-gif"> sendo ajustado para não ficar muito grande */
 .loading-div {
   width: 50px;
   display: none;
+  /* display:none remove o elemento do documento (DOM) e não ocupa espaço no layout. */
 }
 
 .loading-div img {
@@ -219,7 +164,7 @@ header {
   display: flex;
   justify-content: flex-end;
 }
-
+/* medidas do cadastro e login quando algo da inválido */
 .card_erro {
   display: none;
   background-color: #fff;

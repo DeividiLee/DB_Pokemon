@@ -19,7 +19,7 @@
 
     <!--header inicio-->
     <header>
-        <p  class="logo" >PokemonDB</p>a>
+        <p  class="logo" >PokemonDB</p>
         <ul class="navlist">
             <li><a href="index.html">Home</a></li>
             <li><a href="pokedex.html">Database</a></li>
@@ -80,15 +80,18 @@
 </html>
 
 <script>
+    // função cadastrar ativado quando o usuário clicar em cadastrar <button class="botao" onclick="cadastrar()">Cadastrar</button>
     function cadastrar() {
       
         //Recupere o valor da nova input pelo nome do id
+        // armazenando as inputs em uma variável
         // Agora vá para o método fetch logo abaixo
         var nomeVar = nome_input.value;
         var emailVar = input_email.value;
         var senhaVar = input_senha.value;
         var confirmacaoSenhaVar = input_confirmar_senha.value;
 
+        erro_nome.innerHTML ="";
         erro_email.innerHTML = "";
         erro_senha.innerHTML = "";
         erro_confirmar_senha.innerHTML = "";
@@ -96,7 +99,7 @@
 
         if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
             alert("Preencha os campos vazios")
-
+            // ao registrar o email , deverá conter caractéres @ e .com para identificar que é um email
         } else { if (emailVar.indexOf("@") == -1 || emailVar.endsWith(".com") == false) {
 
             erro_email.innerHTML = "email inválido"
@@ -116,7 +119,7 @@
             }
 
             }
-
+            // a senha necessita de caracteres especiais
             else if (!/[!@#\$%\^&\*\(\)\-_\+=\[\]{};':"\\|,.<>\/?]/.test(senhaVar)) { /* O sinal de exclamação ! no início inverte o resultado da verificação*/
             erro_senha.innerHTML = 'Senha inválida!'
             erro_senha.innerHTML += ' A senha deve conter pelo menos um caractere especial.'
@@ -125,21 +128,21 @@
             }
 
             
-
+            // a senha necessita ter 8 ou mais digitos
             else if (senhaVar.length < 8) {
             erro_senha.innerHTML = 'Senha inválida!'
             erro_senha.innerHTML += ' Precisa ter ao menos 8 dígitos'
             input_senha.className = 'invalido'
 
             }
-
+            //  confirmacaoSenha tem que ser igual a senha
             else if
             (confirmacaoSenhaVar != senhaVar) {
             erro_confirmar_senha.innerHTML = `A senha de confirmação não corresponde à senha inserida. Por favor, tente novamente`
             input_confirmar_senha.className = "invalido"}
 
                 
-
+                // entra nesse else se tudo estiver
              else {alert("Cadastro Concluído com sucesso!")
             window.location = "login.html";}
             // Enviando o valor da nova input
@@ -156,18 +159,5 @@
                     senhaServer: senhaVar
                 })
             })}
-                }// Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        })
+                }
 </script>

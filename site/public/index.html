@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <!-- começdo do header -->
     <header>
         <p class="logo">PokemonDB</p>
         <ul class="navlist">
@@ -21,6 +22,8 @@
             <li><a href="login.html">Login</a></li>
         </ul>
     </header>
+    <!-- fim do header -->
+    <!-- começo do conteúdo -->
     <section class="pokemon">
         <div class="pokemon-text">
             <h4>Nintendo</h4>
@@ -49,8 +52,8 @@
 
     </section>
 
-    </section>
-
+    <!-- fim do conteúdo -->
+<!-- começo do footer -->
     <footer>
         <div id="footer_conteudo">
             <ul class="footer_nav">
@@ -78,14 +81,18 @@
             © 2023 todos os direitos reservados
         </div>
     </footer>
+    <!-- fim do footer -->
 
 
 </body>
 
 </html>
 <script>
-    // enviar mensagem e mostrar no gráfico
-    // 
+    // enviar um número para o banco de dados e resgatado com um select para o gráfico no
+    // <div class="gráfico">
+    //         <h1>As gerações favoritas dos usuários</h1>
+    //         <canvas id="myChartCanvas"> </canvas>
+    //     </div> 
     function enviar() {
 
         //Recupere o valor da nova input pelo nome do id
@@ -101,7 +108,6 @@
 
         else { mensagem_erro = "Obrigado pela Sugestão" }
         // Enviando o valor da nova input
-        //   sumirMensagem()
         fetch("/pokemon/enviar", {
             method: "POST",
             headers: {
@@ -119,7 +125,7 @@
     console.log("iniciando plotagem do gráfico...");
 
     // Criando estrutura para plotar gráfico - labels
-    let labels = ['fogo', 'agua', 'gelo', 'grama', 'dragao', 'terra', 'lutador', 'fada', 'inseto', 'normal', 'escuridao', 'psiquico', 'fantasma', 'metal', 'veneno', 'rocha'];
+    let labels = ["kanto" , "johto","hoen", "quatro", "sinnoh"," unnova", "kalos", "alola", "galar" ,"paldea"];
 
     // Criando estrutura para plotar gráfico - dados
     let dados = {
@@ -130,7 +136,7 @@
           data: [],
           fill: false,
           borderColor: "rgb(75, 192, 192)",
-          backgroundColor: ["#FF4422", "#3399ff ", "#66CCFF", "#77CC55", "#7766EE", "BBAA66", "BB5544", "#EE99EE", "#AABB22", "#AAAA99", "#775522", "#FF5599", "#6666BB", "BBAA66", "#AAAABB", "#BBAA66"],
+          backgroundColor: ["#FF4422", "#3399ff ", "#66CCFF", "#77CC55", "#7766EE", "BBAA66", "BB5544", "#EE99EE", "#AABB22"],
           tension: 0.1,
         }
       ],
@@ -150,57 +156,35 @@
     var oito = 0
     var nove = 0
     
-
+// resposta para cada registro capturado do enviar() é recuperado e inserido no gráfico aqui 
+// um = kanto, dois = johto, tres =hoe,n quatro =sinnoh, cinco =unnova, seis= kalos ,sete =alola, oito =galar ,nove= paldea,
     for (i = 0; i < resposta.length; i++) {
       var geracao = resposta[i]
-      // var tipo2 = resposta[i].Type2
-    //   console.log("nathan ta auqi")
-    //   console.log(tipo)
-      if (geracao.geracao == 'Water' || tipo.Type2 == 'Water') {
-        agua++
+      if (geracao.geracao == '1' ) {
+        um++
       }
-      if (tipo.Type == 'Fire' || tipo.Type2 == 'Fire') {
-        fogo++
+      if (geracao.geracao == '2' ) {
+        dois++
       }
-      if (tipo.Type == 'Ice' || tipo.Type2 == 'Ice') { gelo++ }
-      if (tipo.Type == 'Grass' || tipo.Type2 == 'Grass') { grama++ }
-      if (tipo.Type == 'Dragon' || tipo.Type2 == 'Dragon') { dragao++ }
-      if (tipo.Type == 'Ground' || tipo.Type2 == 'Ground') { terra++ }
-      if (tipo.Type == 'Fighter' || tipo.Type2 == 'Fighter') { lutador++ }
-      if (tipo.Type == 'Fairy' || tipo.Type2 == 'Fairy') { fada++ }
-      if (tipo.Type == 'Bug' || tipo.Type2 == 'Bug') { inseto++ }
-      if (tipo.Type == 'Flying' || tipo.Type2 == 'Flying') { voador++ }
-      if (tipo.Type == 'Psychic' || tipo.Type2 == 'Psychic') { psiquico++ }
-      if (tipo.Type == 'Eletric' || tipo.Type2 == 'Eletric') { eletrico++ }
-      if (tipo.Type == 'Ghost' || tipo.Type2 == 'Ghost') { fantasma++ }
-      if (tipo.Type == 'Normal' || tipo.Type2 == 'Normal') { normal++ }
-      if (tipo.Type == 'Dark' || tipo.Type2 == 'Dark') { escuridao++ }
-      if (tipo.Type == 'Steel' || tipo.Type2 == 'Steel') { metal++ }
-      if (tipo.Type == 'Rock' || tipo.Type2 == 'Rock') { rocha++ }
-      if (tipo.Type == 'Poison' || tipo.Type2 == 'Poison') { veneno++ }
-      console.log(tipo)
+      if (geracao.geracao == '3' ) { tres++ }
+      if (geracao.geracao == '4' ) { quatro++ }
+      if (geracao.geracao == '5' ) { cinco++ }
+      if (geracao.geracao == '6' ) { seis++ }
+      if (geracao.geracao == '7' ) { sete++ }
+      if (geracao.geracao == '8' ) { oito++ }
+      if (geracao.geracao == '9' ) { nove++ }
+      
     }
 
-    var tipo = [fogo, agua, gelo, grama, dragao, terra, lutador, fada, inseto, normal, escuridao, psiquico, fantasma, metal, veneno, rocha]
-    console.log(tipo)
+    var geracao = [kanto ,johto,hoen, sinnoh ,unnova, kalos, alola, galar, paldea]
 
     // Inserindo valores recebidos em estrutura para plotar o gráfico
 
     for (i = 0; i < 18; i++) {
       var registro = resposta[i];
-
-      console.log("REGISTRO " + registro)
-
-
-      //   labels.push("fogo");
       dados.datasets[0].data.push(tipo[i]);
 
-      // if (registro.Type === "Water") {
-      //    tipoAgua++
-      // } else {
-      //     console.log("falha no teste")
-      // }
-
+      
     }
 
     console.log("----------------------------------------------");
@@ -226,8 +210,6 @@
 
     // Adicionando gráfico criado em div na tela
     let myChart = new Chart(document.getElementById(`myChartCanvas`), config);
-
-    // setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
   }
 
 
