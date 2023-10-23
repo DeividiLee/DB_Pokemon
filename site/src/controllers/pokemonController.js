@@ -31,25 +31,25 @@ function cadastrar(req, res) {
         res.status(500).json(erro.sqlMessage);
     })
 }
-function editar(req, res) {
-    var novaDescricao = req.body.descricao;
+// function editar(req, res) {
+//     var novaDescricao = req.body.descricao;
     
 
-    pokemonModel.editar(novaDescricao)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        )
-        .catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+//     pokemonModel.editar(novaDescricao)
+//         .then(
+//             function (resultado) {
+//                 res.json(resultado);
+//             }
+//         )
+//         .catch(
+//             function (erro) {
+//                 console.log(erro);
+//                 console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+//                 res.status(500).json(erro.sqlMessage);
+//             }
+//         );
 
-}
+// }
 function enviar(req, res) {
     var mensagem = req.body.mensagemServer
 
@@ -68,6 +68,6 @@ function enviar(req, res) {
 module.exports = {
     listar,
     cadastrar,
-    editar,
+    // editar,
     enviar
 }

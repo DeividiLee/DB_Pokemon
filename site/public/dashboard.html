@@ -1,98 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PokemonDB</title>
 
-    <!-- <link rel="stylesheet" href="../card/style.css" /> -->
-    <link rel="stylesheet" href="card/dashboards.css" />
-    <script src="../js/funcoes.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PokemonDB</title>
 
-    <!-- scripts do Chart.js - 2022-1 -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- <link rel="stylesheet" href="../card/style.css" /> -->
+  <link rel="stylesheet" href="card/dashboards.css" />
+  <script src="../js/funcoes.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
 
-    <!--FONT AWESOME-->
-    <script
-      src="https://kit.fontawesome.com/9f7414eb10.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
+  <!-- scripts do Chart.js - 2022-1 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- <body onload=" atualizarFeed()"> -->
-  <body>
-    <!-- <header>
-      <div class="header-left">
-        <div class="hello">
-            <h3>Olá, <span id="b_usuario"></span>!</h3>
-        </div>
-        <div class="header-right">
-          <div>
-            <div class="btn-nav-white">
-              <a href="dashboard.html">
-                  <h3>Dashboard</h3>
-              </a>
-          </div>
-          <div class="btn-nav-white">
-            <a href="edicao.html">
-                <h3>Editar</h3>
-            </a>
-        </div>
-          <div class="btn-logout" onclick="limparSessao()">
-              <h3>Sair</h3>
-          </div>
-        </div>
-        </div>
-        
-    </header> -->
-    <header>
-      <p  class="logo" >PokemonDB</p>
-      <ul class="navlist">
-          <li>
-            <div class="btn-nav-white">
-              <a href="dashboard.html">
-                  <h3>Dashboard</h3>
-              </a>
-          </div>
-          </li>
-          <li><div class="btn-nav-white">
-            <a href="edicao.html">
-                <h3>Editar</h3>
-            </a>
-        </div></li>
-          <li><div class="btn-logout" onclick="limparSessao()">
-            <h3>Sair</h3>
-        </div></li>
-          
-      </ul>
-  </header>
-  
+  <!--FONT AWESOME-->
+  <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+</head>
+
+<!-- <body onload=" atualizarFeed()"> -->
+
+<body>
+
+  <header>
+    <div class="hello">
+      <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
   </div>
+    <ul class="navlist">
+
+      <li>
+        <div class="btn-nav-white">
+          <a href="edicao.html">
+            <h3>Editar</h3>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="btn-logout" onclick="limparSessao()">
+          <h3>Sair</h3>
+        </div>
+      </li>
+
+    </ul>
+  </header>
+
+  </div>
+
   <div id="main">
-    <div id="main"></div>
     <section>
+      <h1>Cadastre um pokémon!</h1>
       <div class="divCadastro">
-         <input type="number" id="input_pokemon" placeholder="001" />
+        <input type="number" id="input_pokemon" placeholder="001" />
         <button onclick="cadastrar()">+</i></button>
       </div>
       <div id="teste"></div>
 
     </section>
-    <article >
-        <div class="gráfico">
-            <canvas id="myChartCanvas"> </canvas>
-          </div>
+    <article>
+      <div class="gráfico">
+        <canvas id="myChartCanvas"> </canvas>
+      </div>
     </article>
   </div>
-  
-  </body>
+
+
+
+</body>
+
 </html>
 
 <script>
@@ -200,13 +181,13 @@
 
               console.log(publicacao);
 
-              divPublicacao.innerHTML += `<br>  ${publicacao.fkPokemon}${publicacao.Name}${publicacao.Type}`;
+              divPublicacao.innerHTML += `<br>  ${publicacao.fkPokemon},${publicacao.Name}${publicacao.Type},`;
 
-              
+
               feed.appendChild(divPublicacao);
             }
             setTimeout(plotarGrafico(resposta, 1));
-            
+
           });
         } else {
           throw "Houve um erro na API!";
@@ -262,8 +243,8 @@
     console.log("iniciando plotagem do gráfico...");
 
     // Criando estrutura para plotar gráfico - labels
-    let labels = ['fogo', 'agua','gelo','grama','dragao','terra','lutador','fada','inseto','normal','escuridao','psiquico','fantasma','metal','veneno','rocha'];
-    
+    let labels = ['fogo', 'agua', 'gelo', 'grama', 'dragao', 'terra', 'lutador', 'fada', 'inseto', 'normal', 'escuridao', 'psiquico', 'fantasma', 'metal', 'veneno', 'rocha'];
+
     // Criando estrutura para plotar gráfico - dados
     let dados = {
       labels: labels,
@@ -273,7 +254,7 @@
           data: [],
           fill: false,
           borderColor: "rgb(75, 192, 192)",
-          backgroundColor: ["#FF4422","#3399ff ","#66CCFF","#77CC55","#6666BB","BBAA66","BB5544","#EE99EE","#AABB22","#AAAA99","#775522","#FF5599","6666BB","BBAA66","#AAAABB","#BBAA66"],
+          backgroundColor: ["#FF4422", "#3399ff ", "#66CCFF", "#77CC55", "#7766EE", "BBAA66", "BB5544", "#EE99EE", "#AABB22", "#AAAA99", "#775522", "#FF5599", "#6666BB", "BBAA66", "#AAAABB", "#BBAA66"],
           tension: 0.1,
         }
       ],
@@ -298,61 +279,61 @@
     var psiquico = 0
     var eletrico = 0
     var voador = 0
-    var escuridao = 0 
+    var escuridao = 0
     var rocha = 0
     var veneno = 0
     var metal = 0
-    
-    for(i= 0;i<resposta.length ;i++) {
+
+    for (i = 0; i < resposta.length; i++) {
       var tipo = resposta[i]
       // var tipo2 = resposta[i].Type2
       console.log("nathan ta auqi")
       console.log(tipo)
-        if(tipo.Type == 'Water'||tipo.Type2 =='Water' ) {
-          agua++
-        }
-        if(tipo.Type == 'Fire'||tipo.Type2 == 'Fire' ) {
-          fogo++
-        }
-        if(tipo.Type ==  'Ice'||tipo.Type2 == 'Ice') {gelo ++}
-        if(tipo.Type == 'Grass'||tipo.Type2 == 'Grass') {grama++}
-        if(tipo.Type == 'Dragon'||tipo.Type2 == 'Dragon') {dragao++}
-        if(tipo.Type == 'Ground'||tipo.Type2 == 'Ground') {terra++}
-        if(tipo.Type == 'Fighter'||tipo.Type2 == 'Fighter') {lutador++} 
-        if(tipo.Type == 'Fairy'||tipo.Type2 == 'Fairy') {fada++}
-        if(tipo.Type == 'Bug'||tipo.Type2 == 'Bug') {inseto++}
-        if(tipo.Type == 'Flying'||tipo.Type2 == 'Flying') {voador++}
-        if(tipo.Type == 'Psychic'||tipo.Type2 == 'Psychic') {psiquico++}
-        if(tipo.Type == 'Eletric'||tipo.Type2 == 'Eletric') {eletrico++}
-        if(tipo.Type == 'Ghost'||tipo.Type2 == 'Ghost') {fantasma++}
-        if(tipo.Type == 'Normal'||tipo.Type2 == 'Normal') {normal++}
-        if(tipo.Type == 'Dark' ||tipo.Type2 == 'Dark') {escuridao++}
-        if(tipo.Type == 'Steel' ||tipo.Type2 == 'Steel') {metal++}
-        if(tipo.Type == 'Rock' ||tipo.Type2 == 'Rock') {rocha++}
-        if(tipo.Type == 'Poison' ||tipo.Type2 == 'Poison') {veneno++}
-        console.log(tipo)
+      if (tipo.Type == 'Water' || tipo.Type2 == 'Water') {
+        agua++
       }
-      
-      var tipo = [fogo,agua,gelo,grama,dragao,terra,lutador,fada,inseto,normal, escuridao, psiquico,fantasma,metal,veneno,rocha]
+      if (tipo.Type == 'Fire' || tipo.Type2 == 'Fire') {
+        fogo++
+      }
+      if (tipo.Type == 'Ice' || tipo.Type2 == 'Ice') { gelo++ }
+      if (tipo.Type == 'Grass' || tipo.Type2 == 'Grass') { grama++ }
+      if (tipo.Type == 'Dragon' || tipo.Type2 == 'Dragon') { dragao++ }
+      if (tipo.Type == 'Ground' || tipo.Type2 == 'Ground') { terra++ }
+      if (tipo.Type == 'Fighter' || tipo.Type2 == 'Fighter') { lutador++ }
+      if (tipo.Type == 'Fairy' || tipo.Type2 == 'Fairy') { fada++ }
+      if (tipo.Type == 'Bug' || tipo.Type2 == 'Bug') { inseto++ }
+      if (tipo.Type == 'Flying' || tipo.Type2 == 'Flying') { voador++ }
+      if (tipo.Type == 'Psychic' || tipo.Type2 == 'Psychic') { psiquico++ }
+      if (tipo.Type == 'Eletric' || tipo.Type2 == 'Eletric') { eletrico++ }
+      if (tipo.Type == 'Ghost' || tipo.Type2 == 'Ghost') { fantasma++ }
+      if (tipo.Type == 'Normal' || tipo.Type2 == 'Normal') { normal++ }
+      if (tipo.Type == 'Dark' || tipo.Type2 == 'Dark') { escuridao++ }
+      if (tipo.Type == 'Steel' || tipo.Type2 == 'Steel') { metal++ }
+      if (tipo.Type == 'Rock' || tipo.Type2 == 'Rock') { rocha++ }
+      if (tipo.Type == 'Poison' || tipo.Type2 == 'Poison') { veneno++ }
       console.log(tipo)
+    }
+
+    var tipo = [fogo, agua, gelo, grama, dragao, terra, lutador, fada, inseto, normal, escuridao, psiquico, fantasma, metal, veneno, rocha]
+    console.log(tipo)
 
     // Inserindo valores recebidos em estrutura para plotar o gráfico
 
     for (i = 0; i < 18; i++) {
       var registro = resposta[i];
 
-      console.log("REGISTRO " +registro)
-      
+      console.log("REGISTRO " + registro)
 
-    //   labels.push("fogo");
-    dados.datasets[0].data.push(tipo[i]);
-    
-    // if (registro.Type === "Water") {
-    //    tipoAgua++
-    // } else {
-    //     console.log("falha no teste")
-    // }
-      
+
+      //   labels.push("fogo");
+      dados.datasets[0].data.push(tipo[i]);
+
+      // if (registro.Type === "Water") {
+      //    tipoAgua++
+      // } else {
+      //     console.log("falha no teste")
+      // }
+
     }
 
     console.log("----------------------------------------------");
@@ -367,13 +348,13 @@
     const config = {
       type: "bar",
       data: dados,
-    //   options: {
-    //     scales: {
-    //       y: {
-    //         beginAtZero: true,
-    //       },
-    //     },
-    //   },
+      //   options: {
+      //     scales: {
+      //       y: {
+      //         beginAtZero: true,
+      //       },
+      //     },
+      //   },
     };
 
     // Adicionando gráfico criado em div na tela

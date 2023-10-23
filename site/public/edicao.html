@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AquaTech | Página Inicial</title>
 
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="./dashboards.css">
+    <link rel="stylesheet" href="/card/edicao.css">
+ 
     <script src="../js/funcoes.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -18,46 +18,54 @@
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao()" style="background-color: #161618;">
-    <!-- <body onload="validarSessao()"> -->
+<body>
 
-    <div class="janela">
-        <div class="header-left">
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-            </div>
+    <!--Header-->
 
-            <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
+    <header>
+        <div class="hello">
+            <h3>Olá, <span id="b_usuario"></span>!</h3>
+        </div>
+        <ul class="navlist">
+            <li>
+              <div class="btn-nav-white">
+                <a href="dashboard.html">
+                    <h3>Dashboard</h3>
                 </a>
             </div>
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-        </div>
-
-        <div class="dash-right">
-
-            <div class="avisos">
-                <div class="container">
-                    <h1>Editar nome</h1>
-                    <div class="div-form">
-                        <label>
-                            Para qual nome gostaria de mudar?
-                            <br>
-                            <textarea id="textarea_descricao" ></textarea>
-                        </label>
-                        <br>
-                        <button onclick="editar()">Editar</button>
+            </li>
+            
+            <li><div class="btn-logout" onclick="limparSessao()">
+              <h3>Sair</h3>
+          </div></li>
+            
+        </ul>
+    </header>
+    <section>
+        <div class="container">
+            <div class="card">
+                <div class="formulario">
+                    <h2>Para qual nome gostaria de mudar?</h2>
+                    <div class="campo">
+                        <!-- <span>Nome:</span> -->
+                        <input id="nome_input" type="text" placeholder="nome">
                     </div>
-
+                    
+                    <button class="botao" onclick="editar">Editar</button>
                 </div>
+
+                <!-- <div id="div_aguardar" class="loading-div">
+                    <img src="./assets/circle-loading.gif" id="loading-gif">
+                </div> -->
+
+                <div id="div_erros_login"></div>
             </div>
         </div>
-    </div>
-</body>
+    </section>
 
+        
+
+</body>
 </html>
 
 <script>

@@ -19,11 +19,13 @@ header{
     list-style: none;
     font-size: 20px;
     color:white;
+    background: linear-gradient(319deg, #ba2d0b 0%, #fe7f2d 37%, #ffbf46 100%);
 }
 header ul{
   display:flex;
-  width:20%; 
+  width:30%; 
   justify-content: space-between;
+  background:red;
 }
 header li{
   list-style: none;
@@ -37,25 +39,31 @@ header a:hover{
   border-bottom: 2px solid white;
   cursor: pointer;
 }
+#main{
+  display:flex;
+}
 
 section{
-  background-color: aqua;
-  width:40%;
-  height:690px;
+  background-color: black;
+  width:30%;
+  height:480px;;
   display:flex;
-  /* justify-content: center; */
-  flex-direction: column
+  align-items: center;
+  flex-direction: column;
+  color:white;
   ;
 }
 .divCadastro{
-  background:blue;
+  /* background:blue; */
   height:35px;
   display:flex;
   justify-content: center;;
 }
 #teste{
-  height:100%;
-  background: purple;
+  /* height:50%; */
+  /* background: purple; */
+  color:white;
+  background:black;
   max-height: 1000px;
   overflow-y: scroll;
   display:flex;
@@ -63,8 +71,10 @@ section{
   align-items: center;
 }
 article{
-  width:50%;
-  height:690px;
+  background:black;
+  color:white;
+  width:1000px;
+  height:auto;
 }
 
 
