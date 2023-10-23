@@ -2,7 +2,6 @@
 create database if not exists pokemon;
 use pokemon;
 
-drop database pokemon;
 
 use pokemon;
 select * from todos_pokemon;
@@ -26,19 +25,15 @@ primary key(idteam, fkPokemon, fkUsuario)
 );
 
 create table geracao (
-	idMensagem int primary key auto_increment,
+	idGeracao int primary key auto_increment,
 	geracao int
-)
+);
+drop table geracao;
 select * from team_pokemon;
 select * from usuario;
-
-insert into usuario values (
-null,'davi','davi.lee@sptech.school','12345678!');
-
 select * from geracao;
-
-select geracao from geracao;
-
+create view mostrar as SELECT * FROM team_pokemon join todos_pokemon on idPokemon = fkPokemon join usuario on id = fkusuario where id = 1;
+select * from mostrar;
 SELECT * FROM team_pokemon join todos_pokemon on idPokemon = fkPokemon join usuario on id = fkusuario where id = 1;
 
 

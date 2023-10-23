@@ -31,25 +31,23 @@ function cadastrar(req, res) {
         res.status(500).json(erro.sqlMessage);
     })
 }
-// function editar(req, res) {
-//     var novaDescricao = req.body.descricao;
-    
+function editar(req, res) {
+    var novoNome = req.body.nomeServer;
+    var id = req.body.idServer;
 
-//     pokemonModel.editar(novaDescricao)
-//         .then(
-//             function (resultado) {
-//                 res.json(resultado);
-//             }
-//         )
-//         .catch(
-//             function (erro) {
-//                 console.log(erro);
-//                 console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
-//                 res.status(500).json(erro.sqlMessage);
-//             }
-//         );
+    if (novoNome == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (id == undefined) {
+        res.status(400).send("Seu usuário está undefined!");
+    } 
 
-// }
+    pokemonModel.editar(novoNome, id).then(function(resposta){
+        res.status(200).send("pokemon criado com sucesso");
+    }).catch(function(erro){
+        res.status(500).json(erro.sqlMessage);
+    })
+
+}
 function enviar(req, res) {
     var mensagem = req.body.mensagemServer
 
@@ -57,17 +55,13 @@ function enviar(req, res) {
         res.status(400).send("Sua mensagem está undefined!");
     } 
 
-    pokemonModel.enviar(mensagem).then(function(resposta){
-        res.status(200).send("mensagem criada com sucesso");
-    }).catch(function(erro){
-        res.status(500).json(erro.sqlMessage);
-    })
+    pokemonModel.enviar(mensagem)
 }
 
 
 module.exports = {
     listar,
     cadastrar,
-    // editar,
+    editar,
     enviar
 }

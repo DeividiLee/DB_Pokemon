@@ -31,7 +31,7 @@
 
   <header>
     <div class="hello">
-      <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+      <h3>Olá, <span id="b_usuario"></span>!</h3>
   </div>
     <ul class="navlist">
 
@@ -77,6 +77,9 @@
 </html>
 
 <script>
+   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+  
+  console.log(sessionStorage.NOME_USUARIO)
   let proximaAtualizacao;
 
   // window.onload = obterDadosGraficos();

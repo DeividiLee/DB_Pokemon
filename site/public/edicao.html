@@ -51,7 +51,7 @@
                         <input id="nome_input" type="text" placeholder="nome">
                     </div>
                     
-                    <button class="botao" onclick="editar">Editar</button>
+                    <button class="botao" onclick="editar()">Editar</button>
                 </div>
 
                 <!-- <div id="div_aguardar" class="loading-div">
@@ -69,29 +69,70 @@
 </html>
 
 <script>
-    
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO
 
+    // function editar() {
+    //     fetch(`/pokemon/editar/${sessionStorage.getItem("ID_POSTAGEM_EDITANDO")}`, {
+    //         method: "PUT",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify({
+    //             descricao: textarea_descricao.value
+    //         })
+    //     }).then(function (resposta) {
+
+    //         if (resposta.ok) {
+    //             window.location = "dashboard.html"
+    //         } else if (resposta.status == 404) {
+    //             window.alert("Deu 404!");
+    //         } else {
+    //             throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+    //         }
+    //     }).catch(function (resposta) {
+    //         console.log(`#ERRO: ${resposta}`);
+    //     });
+    // }
     function editar() {
-        fetch(`/pokemon/editar/${sessionStorage.getItem("ID_POSTAGEM_EDITANDO")}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                descricao: textarea_descricao.value
-            })
-        }).then(function (resposta) {
+    console.log("DENTRO DO CADASTRAR");
 
-            if (resposta.ok) {
-                window.location = "dashboard.html"
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
-            } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    }
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var idVar = sessionStorage.ID_USUARIO
+    var nomeVar = nome_input.value
+
+    // Enviando o valor da nova input
+    fetch("/pokemon/editar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        idServer: idVar,
+        nomeServer: nomeVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("ESTOU NO THEN DO cadastrar()!");
+
+        if (resposta.ok) {
+          console.log(resposta);
+        } else {
+          console.log("Houve um erro ao tentar realizar o login!");
+
+          resposta.text().then((texto) => {
+            console.error(texto);
+            alert("Realize o Login Novamente Para Atualizar o Nome de Usuario")
+          });
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+      });
+
+    return false;
+  }
 
 </script>
