@@ -12,7 +12,7 @@
 <title>PokemonDB | Home</title>
 </head>
 
-<body>
+<body onload="plotarGrafico()">
     <!-- começdo do header -->
     <header>
         <p class="logo">PokemonDB</p>
@@ -53,7 +53,7 @@
     </section>
 
     <!-- fim do conteúdo -->
-<!-- começo do footer -->
+    <!-- começo do footer -->
     <footer>
         <div id="footer_conteudo">
             <ul class="footer_nav">
@@ -88,6 +88,13 @@
 
 </html>
 <script>
+    function obterDadosGraficos() {
+    obterDadosGrafico(1);
+    obterDadosGrafico(2);
+    obterDadosGrafico(3);
+    obterDadosGrafico(4);
+  }
+    window.onload(plotarGrafico())
     // enviar um número para o banco de dados e resgatado com um select para o gráfico no
     // <div class="gráfico">
     //         <h1>As gerações favoritas dos usuários</h1>
@@ -106,7 +113,7 @@
 
         }
 
-        else { mensagem_erro = "Obrigado pela Sugestão" }
+        else { mensagem_erro.innerHTML = "Obrigado pela sua Participacao na pesquisa" }
         // Enviando o valor da nova input
         fetch("/pokemon/enviar", {
             method: "POST",
@@ -119,98 +126,107 @@
                 mensagemServer: mensagemVar
             })
         })
+        resposta.json().then(function (resposta) {
+            console.log("Dados recebidos: ", JSON.stringify(resposta));
+            resposta.reverse();
+            
+            Timeout(plotarGrafico(resposta, 1));
+
+          });
+
     }
 
-    function plotarGrafico(resposta, idAquario) {
-    console.log("iniciando plotagem do gráfico...");
 
-    // Criando estrutura para plotar gráfico - labels
-    let labels = ["kanto" , "johto","hoen", "quatro", "sinnoh"," unnova", "kalos", "alola", "galar" ,"paldea"];
+    function plotarGrafico(resposta) {
+        console.log("iniciando plotagem do gráfico...");
 
-    // Criando estrutura para plotar gráfico - dados
-    let dados = {
-      labels: labels,
-      datasets: [
-        {
-          label: "Tipo",
-          data: [],
-          fill: false,
-          borderColor: "rgb(75, 192, 192)",
-          backgroundColor: ["#FF4422", "#3399ff ", "#66CCFF", "#77CC55", "#7766EE", "BBAA66", "BB5544", "#EE99EE", "#AABB22"],
-          tension: 0.1,
+        // Criando estrutura para plotar gráfico - labels
+        let labels = ["kanto", "johto", "hoen", "quatro", "sinnoh", " unnova", "kalos", "alola", "galar", "paldea"];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [
+                {
+                    label: "Tipo",
+                    data: [],
+                    fill: false,
+                    borderColor: "rgb(75, 192, 192)",
+                    backgroundColor: ["#FF4422", "#3399ff ", "#66CCFF", "#77CC55", "#7766EE", "BBAA66", "BB5544", "#EE99EE", "#AABB22"],
+                    tension: 0.1,
+                }
+            ],
+        };
+
+        console.log("----------------------------------------------");
+        console.log(
+            'Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":'
+        );
+        console.log(resposta);
+        var um = 0
+        var dois = 0
+        var tres = 0
+        var cinco = 0
+        var seis = 0
+        var sete = 0
+        var oito = 0
+        var nove = 0
+
+        // resposta para cada registro capturado do enviar() é recuperado e inserido no gráfico aqui 
+        // um = kanto, dois = johto, tres =hoe,n quatro =sinnoh, cinco =unnova, seis= kalos ,sete =alola, oito =galar ,nove= paldea,
+        for (i = 0; i < resposta.length; i++) {
+            var geracao = resposta[i]
+            if (geracao.geracao == '1') {
+                um++
+            }
+            if (geracao.geracao == '2') {
+                dois++
+            }
+            if (geracao.geracao == '3') { tres++ }
+            if (geracao.geracao == '4') { quatro++ }
+            if (geracao.geracao == '5') { cinco++ }
+            if (geracao.geracao == '6') { seis++ }
+            if (geracao.geracao == '7') { sete++ }
+            if (geracao.geracao == '8') { oito++ }
+            if (geracao.geracao == '9') { nove++ }
+
         }
-      ],
-    };
 
-    console.log("----------------------------------------------");
-    console.log(
-      'Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":'
-    );
-    console.log(resposta);
-    var um = 0
-    var dois = 0
-    var tres = 0
-    var cinco = 0
-    var seis = 0
-    var sete = 0
-    var oito = 0
-    var nove = 0
-    
-// resposta para cada registro capturado do enviar() é recuperado e inserido no gráfico aqui 
-// um = kanto, dois = johto, tres =hoe,n quatro =sinnoh, cinco =unnova, seis= kalos ,sete =alola, oito =galar ,nove= paldea,
-    for (i = 0; i < resposta.length; i++) {
-      var geracao = resposta[i]
-      if (geracao.geracao == '1' ) {
-        um++
-      }
-      if (geracao.geracao == '2' ) {
-        dois++
-      }
-      if (geracao.geracao == '3' ) { tres++ }
-      if (geracao.geracao == '4' ) { quatro++ }
-      if (geracao.geracao == '5' ) { cinco++ }
-      if (geracao.geracao == '6' ) { seis++ }
-      if (geracao.geracao == '7' ) { sete++ }
-      if (geracao.geracao == '8' ) { oito++ }
-      if (geracao.geracao == '9' ) { nove++ }
-      
+        var geracao = [kanto, johto, hoen, sinnoh, unnova, kalos, alola, galar, paldea]
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+
+        for (i = 0; i < 9; i++) {
+            var registro = resposta[i];
+            dados.datasets[0].data.push(geracao[i]);
+
+
+        }
+
+        console.log("----------------------------------------------");
+        console.log("O gráfico será plotado com os respectivos valores:");
+        console.log("Labels:");
+        console.log(labels);
+        console.log("Dados:");
+        console.log(dados.datasets);
+        console.log("----------------------------------------------");
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: "bar",
+            data: dados,
+            //   options: {
+            //     scales: {
+            //       y: {
+            //         beginAtZero: true,
+            //       },
+            //     },
+            //   },
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(document.getElementById(`myChartCanvas`), config);
     }
-
-    var geracao = [kanto ,johto,hoen, sinnoh ,unnova, kalos, alola, galar, paldea]
-
-    // Inserindo valores recebidos em estrutura para plotar o gráfico
-
-    for (i = 0; i < 18; i++) {
-      var registro = resposta[i];
-      dados.datasets[0].data.push(tipo[i]);
-
-      
-    }
-
-    console.log("----------------------------------------------");
-    console.log("O gráfico será plotado com os respectivos valores:");
-    console.log("Labels:");
-    console.log(labels);
-    console.log("Dados:");
-    console.log(dados.datasets);
-    console.log("----------------------------------------------");
-
-    // Criando estrutura para plotar gráfico - config
-    const config = {
-      type: "bar",
-      data: dados,
-      //   options: {
-      //     scales: {
-      //       y: {
-      //         beginAtZero: true,
-      //       },
-      //     },
-      //   },
-    };
-
-    // Adicionando gráfico criado em div na tela
-    let myChart = new Chart(document.getElementById(`myChartCanvas`), config);
-  }
 
 
 

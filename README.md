@@ -1,14 +1,23 @@
 <img src="https://user-images.githubusercontent.com/46379117/192358781-9ca879e4-e55e-4d0d-b876-f9a4a2ed9ae8.png" width="600px">
 
-_Web Data Visualization = Visualização de Dados na Web_
-
-_Implementação de Referência para o seu Projeto de Primeiro Semestre_
-
-<hr>
 
 # Como usar
 
 1. Clone este repositório em sua máquina.
+
+1.1 Ative o MYSQL nos serviços,para isso aperta no botão do windows e pesquise por "Serviços", dentro de serviços procure por MYSQL80, clique com botão direito e inicie o serviço caso não esteja iniciado
+
+1.2 Em seguida, abre o diretório C:\Users\davil\OneDrive\Ambiente de Trabalho\DB_Pokemon\site\src\database, até acessar o arquivo script-tabelas.sql,
+
+1.3 em seguida, clique em "reconnect to DBMS" e aperte ctrl + enter na linha 1 e dps  na linha 2 
+
+1.4 IMPORTANTE!!!! Após isso será necessário importar o arquivo todos_pokemon.csv que está no memo caminho do arquivo script-tabelas.sql
+C:\Users\davil\OneDrive\Ambiente de Trabalho\DB_Pokemon\site\src\database
+
+  na barra da direita em "schemas" procure pela tabela "pokemon" e clique com botão direito nele e importe o arquivo.csv que está localizado C:\Users\davil\OneDrive\Ambiente de Trabalho\DB_Pokemon\site\src\database
+
+1.5 agora para verificar se o arquivo foi importado, dê o select * from todos_pokemon;
+1.6 execute o resto do script
 
 
 1. Crie, no Banco de Dados, as tabelas necessárias para o funcionamento deste projeto.
@@ -16,10 +25,13 @@ _Implementação de Referência para o seu Projeto de Primeiro Semestre_
 
 
 3. Acesse o arquivo **/site/app.js** e parametrize o ambiente.
-- Se você estiver utilizando o Ambiente de Produção (SQL Server na nuvem Azure, remoto), comente a linha 1 e deixe habilitada a linha 2 onde está o valor **process.env.AMBIENTE_PROCESSO = "producao";**
-- Se você estiver utilizando o Ambiente de Desenvolvimento (MySQL Workbench, local), comente a linha 2 e deixe habilitada a linha 1 onde está o valor **process.env.AMBIENTE_PROCESSO = "desenvolvimento";**
+
+dentro do arquivo app.js foi criado var pokemonRouter = require("./src/routes/pokemon"); e parametrizado o ambiente para produção
+
 
 4. Adicione as credenciais de Banco de Dados no arquivo **/site/src/database/config.js**, seguindo as instruções neste.
+
+
 
 5. Acesse o local do diretório **/site** presente neste repositório no seu terminal (GitBash ou VSCode) e execute os comandos abaixo:
 
@@ -29,7 +41,7 @@ npm i
 _O comando acima irá instalar as bibliotecas necessárias para o funcionamento do projeto. As bibliotecas a serem instaladas estão listadas no arquivo **package.json** então é muito importante que este não seja alterado. Será criada uma nova pasta/diretório chamado **node_modules** quando o comando for finalizado, que é onde as bibliotecas estão localizadas. Não altere a pasta/diretório._
 
 ```
-npm start
+npm start ou npm run dev
 ``` 
 
 _O comando acima irá iniciar seu projeto e efetuar os comandos de acordo com a sua parametrização feita nos passos anteriores._
@@ -95,6 +107,8 @@ Abaixo, uma figura que ajuda a compreender o caminho percorrido para, por exempl
 - Assim que criada a tabela, faça todo o caminho de **front-end → routes → controllers → models** replicando o que já existe!  
 - Exemplo, se você quiser a funcionalidade de adicionar um novo Aquário, deve criar arquivos referentes ao aquario nos diretórios e replicar também as funções.  
 - Dica: A implementação de AVISO já contém o CRUD completo! :wink:
+
+
  
 ### Fontes bibliográficas
 

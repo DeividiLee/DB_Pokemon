@@ -1,9 +1,6 @@
-
 create database if not exists pokemon;
 use pokemon;
 
-
-use pokemon;
 select * from todos_pokemon;
 alter table todos_pokemon add constraint primary key (idPokemon); -- precisa definir a pk na tabela todos_pokemon
 

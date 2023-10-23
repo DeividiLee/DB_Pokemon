@@ -115,13 +115,11 @@
       }),
     })
       .then(function (resposta) {
-        console.log("ESTOU NO THEN DO cadastrar()!");
 
         if (resposta.ok) {
           console.log(resposta);
           listar();
         } else {
-          console.log("Houve um erro ao tentar realizar o login!");
 
           resposta.text().then((texto) => {
             console.error(texto);
