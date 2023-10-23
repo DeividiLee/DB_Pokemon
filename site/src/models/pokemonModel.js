@@ -2,9 +2,9 @@ var database = require("../database/config")
 
 function listar() {
     var instrucao = `
-        
-    SELECT * FROM team_pokemon join todos_pokemon on idPokemon = fkPokemon join usuario on id = fkusuario where id = 1;
-    `;
+        create view mostrar as SELECT * FROM team_pokemon join todos_pokemon on idPokemon = fkPokemon join usuario on id = fkusuario where id = 1;
+        select * from mostrar
+        `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }

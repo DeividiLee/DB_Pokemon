@@ -25,15 +25,19 @@ fkUsuario int,
 primary key(idteam, fkPokemon, fkUsuario)
 );
 
-create table mensagem (
+create table geracao (
 	idMensagem int primary key auto_increment,
-	mensagem varchar(250)
+	geracao int
 )
 select * from team_pokemon;
 select * from usuario;
 
 insert into usuario values (
 null,'davi','davi.lee@sptech.school','12345678!');
+
+select * from geracao;
+
+select geracao from geracao;
 
 SELECT * FROM team_pokemon join todos_pokemon on idPokemon = fkPokemon join usuario on id = fkusuario where id = 1;
 
