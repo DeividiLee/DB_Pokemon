@@ -46,10 +46,12 @@
             <div>.</div>
             <a href="pokedex.html">Saiba Mais</a>
         </div>
-        <div class="gráfico">
-            <h1>As gerações favoritas dos usuários</h1>
-            <canvas id="myChartCanvas"> </canvas>
+        <div class="graficotext">
+            <h1>As gerações favoritas dos usuários!</h1>
+
         </div>
+        <div class="graficonumero"><canvas id="myChartCanvas"> </canvas></div>
+        
 
 
     </section>
@@ -153,7 +155,7 @@
         console.log("iniciando plotagem do gráfico...");
 
         // Criando estrutura para plotar gráfico - labels
-        let labels = ["kanto", "johto", "hoen", "quatro", "sinnoh", " unnova", "kalos", "alola", "galar", "paldea"];
+        let labels = ["kanto", "johto", "hoen",  "sinnoh", " unnova", "kalos", "alola", "galar", "paldea"];
 
         // Criando estrutura para plotar gráfico - dados
         let dados = {
@@ -187,7 +189,7 @@
 
         // resposta para cada registro capturado do enviar() é recuperado e inserido no gráfico aqui 
         // um = kanto, dois = johto, tres =hoe,n quatro =sinnoh, cinco =unnova, seis= kalos ,sete =alola, oito =galar ,nove= paldea,
-        for (i = 0; i < 9; i++) {
+        for (i = 0; i < resposta.length; i++) {
             var geracao = resposta[i]
             if (geracao.geracao == '1') {
                 um++
