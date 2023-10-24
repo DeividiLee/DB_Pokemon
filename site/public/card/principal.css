@@ -17,7 +17,7 @@ header {
     align-items:center;
     justify-content: space-between;
     padding: 33px ;
-    background:transparent;
+    background: linear-gradient(135deg, rgb(255, 168, 168) 10%, rgb(252, 255, 0) 100%);
     
 }
 

@@ -17,7 +17,7 @@
     align-items:center;
     padding:30px;
     justify-content: space-between;
-    background:red;
+    /* background:red; */
     list-style: none;
     font-size: 20px;
     color:white;
@@ -27,7 +27,7 @@ header ul{
   display:flex;
   width:30%; 
   justify-content: space-between;
-  background:red;
+  /* background:red; */
 }
 header li{
   list-style: none;
