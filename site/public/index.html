@@ -7,12 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="card/principal.css">
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 </head>
 <title>PokemonDB | Home</title>
 </head>
 
-<body onload="plotarGrafico()">
+<body>
     <!-- começdo do header -->
     <header>
         <p class="logo">PokemonDB</p>
@@ -89,7 +91,7 @@
 </html>
 <script>
 
-    window.onload(plotarGrafico)
+    window.onload=listarGeracao()
     // enviar um número para o banco de dados e resgatado com um select para o gráfico no
     // <div class="gráfico">
     //         <h1>As gerações favoritas dos usuários</h1>
@@ -132,7 +134,7 @@
                     }
                     resposta.json().then(function (resposta) {
                         console.log("Dados recebidos: ", JSON.stringify(resposta));
-                        resposta.reverse();
+                        plotarGrafico(resposta);
                         // setTimeout(plotarGrafico(resposta));
 
                     });
@@ -176,6 +178,7 @@
         var um = 0
         var dois = 0
         var tres = 0
+        var quatro =0
         var cinco = 0
         var seis = 0
         var sete = 0
@@ -202,7 +205,7 @@
 
         }
 
-        var geracao = [kanto, johto, hoen, sinnoh, unnova, kalos, alola, galar, paldea]
+        var geracao = [um,dois,tres,quatro,cinco,seis,sete,oito,nove]
 
         // Inserindo valores recebidos em estrutura para plotar o gráfico
 
