@@ -130,10 +130,10 @@
                     if (resposta.status == 204) {
                         console.log("nenhum resultado encontrado")
                     }
-                    resposta.reverse();
                     resposta.json().then(function (resposta) {
                         console.log("Dados recebidos: ", JSON.stringify(resposta));
-                        setTimeout(plotarGrafico(resposta));
+                        resposta.reverse();
+                        // setTimeout(plotarGrafico(resposta));
 
                     });
                 } else {
