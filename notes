@@ -1,7 +1,8 @@
 ▾
 button{
     margin-top: 50px;
-    width: 100%; deixa bem largooooo;
+    width: 100%; 
+    /* deixa bem largooooo; */
     background-color: #ffffff;
     color: #080710;
     padding: 15px 0;
