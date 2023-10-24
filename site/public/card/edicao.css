@@ -25,7 +25,8 @@
 }
 header ul{
   display:flex;
-  width:30%; 
+  width:20%;
+  height:30px; 
   justify-content: space-between;
   /* background:red; */
 }
@@ -37,7 +38,11 @@ header a {
   border-bottom: 2px solid transparent;
   transition: all .55s ease
 }
-header a:hover{
+.btn-logout:hover{
+  border-bottom: 2px solid white;
+  cursor: pointer;
+}
+.btn-nav-white:hover{
   border-bottom: 2px solid white;
   cursor: pointer;
 }
@@ -46,8 +51,6 @@ section{
     margin:50px;
     display:flex;
     justify-content:center;
-    padding:50px;
-    
 }
 .container{
     background: linear-gradient(319deg, #ba2d0b 0%, #fe7f2d 37%, #ffbf46 100%);
@@ -57,6 +60,7 @@ section{
     display:flex;
     justify-content: center;
     align-items:center;
+    padding:30px;;
 }
 section button{
     width:40%;

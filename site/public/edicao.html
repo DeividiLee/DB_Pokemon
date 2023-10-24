@@ -120,12 +120,14 @@
 
         if (resposta.ok) {
           console.log(resposta);
+          alert("Realize o Login Novamente Para Atualizar o Nome de Usuario")
+            window.location = `login.html`
         } else {
           console.log("Houve um erro ao tentar realizar o login!");
 
           resposta.text().then((texto) => {
             console.error(texto);
-            alert("Realize o Login Novamente Para Atualizar o Nome de Usuario")
+            
           });
         }
       })

@@ -9,6 +9,14 @@ function listar() {
     return database.executar(instrucao);
 }
 
+function listarGeracao() {
+    var instrucao = `
+        select * from geracao
+        `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function cadastrar(fkPokemon, idUsuario) {
     var instrucao = `
         INSERT INTO team_pokemon (fkPokemon, fkUsuario) VALUES (${fkPokemon}, ${idUsuario});
@@ -36,6 +44,7 @@ module.exports = {
     cadastrar,
     enviar,
     listar,
-    editar
+    editar,
+    listarGeracao
 };
 

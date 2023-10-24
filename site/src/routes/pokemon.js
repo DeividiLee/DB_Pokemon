@@ -19,6 +19,11 @@ router.get("/listar", function (req, res) {
     pokemonController.listar(req, res);
 });
 
+router.get("/listarGeracao", function (req, res) {
+    // função a ser chamada quando acessar /pokemon/listar
+    pokemonController.listarGeracao(req, res);
+});
+
 router.post("/editar", function (req, res) {
     // função a ser chamada quando acessar /pokemon/cadastrar
    pokemonController.editar(req, res);

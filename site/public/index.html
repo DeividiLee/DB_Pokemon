@@ -88,13 +88,8 @@
 
 </html>
 <script>
-    function obterDadosGraficos() {
-    obterDadosGrafico(1);
-    obterDadosGrafico(2);
-    obterDadosGrafico(3);
-    obterDadosGrafico(4);
-  }
-    window.onload(plotarGrafico())
+
+    window.onload(plotarGrafico)
     // enviar um número para o banco de dados e resgatado com um select para o gráfico no
     // <div class="gráfico">
     //         <h1>As gerações favoritas dos usuários</h1>
@@ -113,7 +108,7 @@
 
         }
 
-        else { mensagem_erro.innerHTML = "Obrigado pela sua Participacao na pesquisa" }
+        else { mensagem_erro.innerHTML = "Obrigado pela sua Participação na pesquisa" }
         // Enviando o valor da nova input
         fetch("/pokemon/enviar", {
             method: "POST",
@@ -126,15 +121,30 @@
                 mensagemServer: mensagemVar
             })
         })
-        resposta.json().then(function (resposta) {
-            console.log("Dados recebidos: ", JSON.stringify(resposta));
-            resposta.reverse();
-            
-            Timeout(plotarGrafico(resposta, 1));
-
-          });
 
     }
+    function listarGeracao() {
+        fetch("/pokemon/listarGeracao")
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    if (resposta.status == 204) {
+                        console.log("nenhum resultado encontrado")
+                    }
+                    resposta.reverse();
+                    resposta.json().then(function (resposta) {
+                        console.log("Dados recebidos: ", JSON.stringify(resposta));
+                        setTimeout(plotarGrafico(resposta));
+
+                    });
+                } else {
+                    throw "Houve um erro na API!";
+                }
+            })
+            .catch(function (resposta) {
+                console.error(resposta);
+            });
+    }
+
 
 
     function plotarGrafico(resposta) {
@@ -174,7 +184,7 @@
 
         // resposta para cada registro capturado do enviar() é recuperado e inserido no gráfico aqui 
         // um = kanto, dois = johto, tres =hoe,n quatro =sinnoh, cinco =unnova, seis= kalos ,sete =alola, oito =galar ,nove= paldea,
-        for (i = 0; i < resposta.length; i++) {
+        for (i = 0; i < 9; i++) {
             var geracao = resposta[i]
             if (geracao.geracao == '1') {
                 um++

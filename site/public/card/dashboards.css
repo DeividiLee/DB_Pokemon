@@ -23,7 +23,8 @@ header{
 }
 header ul{
   display:flex;
-  width:30%; 
+  width:20%; 
+  height:30px;
   justify-content: space-between;
   /* background:red; */
 }
@@ -35,7 +36,12 @@ header a {
   border-bottom: 2px solid transparent;
   transition: all .55s ease
 }
-header a:hover{
+
+.btn-logout:hover{
+  border-bottom: 2px solid white;
+  cursor: pointer;
+}
+.btn-nav-white:hover{
   border-bottom: 2px solid white;
   cursor: pointer;
 }
